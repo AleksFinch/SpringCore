@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="client" class="com.finchuk.test3.Client">
+        <constructor-arg value="1"/>
+        <constructor-arg index="1" value="John Smith" type="java.lang.String"/>
+    </bean>
+    <bean id="consoleEventLogger" class="com.finchuk.test3.ConsoleEventLogger" scope="singleton"/>
+    <bean id="app"  class="com.finchuk.test3.App">
+        <constructor-arg ref="client"/>
+        <constructor-arg ref="consoleEventLogger"/>
+    </bean>
+    <bean id = "event" class = "com.finchuk.test3.Event" scope="prototype">
+        <constructor-arg>
+            <bean class="java.util.Date"/>
+        </constructor-arg>
+        <constructor-arg ref="dateFormat"/>
+        <property name="msg" value="Some event for user 1"></property>
+    </bean>
+
+    <bean id = "dateFormat" class="java.text.DateFormat" factory-method="getDateTimeInstance"/>
+
+</beans>

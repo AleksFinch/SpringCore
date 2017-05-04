@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="consoleEventLogger" class="com.finchuk.test5.ConsoleEventLogger"/>
+
+    <bean id="fileEventLogger" class="com.finchuk.test5.FileEventLogger"
+                              init-method="init">
+        <property name="filename" value="src/main/resources/test5/tmp5.txt"/>
+    </bean>
+
+    <bean id="cacheFileEventLogger" class="com.finchuk.test5.CacheFileEventLogger"
+          destroy-method="destroy" parent="fileEventLogger">
+        <property name="cacheSize" value="2"/>
+    </bean>
+    <bean id="combinedEventLogger" class="com.finchuk.test5.CombinedEventLogger">
+        <constructor-arg>
+            <list>
+                <ref bean="consoleEventLogger"/>
+                <ref bean="fileEventLogger"/>
+                <ref bean="cacheFileEventLogger"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+</beans>

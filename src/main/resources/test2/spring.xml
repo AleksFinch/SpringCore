@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="client" name="user,uswer" class="com.finchuk.test2.Client">
+        <constructor-arg value="1"/>
+        <constructor-arg index="1" value="John Smith" type="java.lang.String"/>
+    </bean>
+    <bean id="consoleEventLogger" class="com.finchuk.test2.ConsoleEventLogger"/>
+    <bean id="app"  class="com.finchuk.test2.App">
+        <constructor-arg ref="client"/>
+        <constructor-arg ref="consoleEventLogger"/>
+    </bean>
+    <alias name="consoleEventLogger" alias="consoleLogger"/>
+</beans>

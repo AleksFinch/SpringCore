@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="consoleEventLogger" class="com.finchuk.test4.ConsoleEventLogger"/>
+
+    <bean id="fileEventLogger" class="com.finchuk.test4.FileEventLogger"
+                              init-method="init">
+        <property name="filename" value="src/main/resources/test4/tmp4.txt"/>
+    </bean>
+
+    <bean id="cacheFileEventLogger" class="com.finchuk.test4.CacheFileEventLogger"
+          destroy-method="destroy" parent="fileEventLogger">
+        <property name="cacheSize" value="2"/>
+    </bean>
+
+</beans>
