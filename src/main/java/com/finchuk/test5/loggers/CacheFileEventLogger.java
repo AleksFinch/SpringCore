@@ -1,5 +1,6 @@
-package com.finchuk.test5;
+package com.finchuk.test5.loggers;
 
+import com.finchuk.test5.Event;
 import org.apache.commons.io.FileUtils;
 
 import java.io.IOException;

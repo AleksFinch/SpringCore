@@ -1,5 +1,6 @@
 package com.finchuk.test5;
 
+import com.finchuk.test5.loggers.EventLogger;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

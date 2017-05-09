@@ -1,4 +1,4 @@
-package com.finchuk.test5;
+package com.finchuk.annotations;
 
 /**
  * Created by Oleksandr_Finchuk on 5/3/2017.

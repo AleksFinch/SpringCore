@@ -1,10 +1,16 @@
-package com.finchuk.test3;
+package com.finchuk.annotations;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by Oleksandr_Finchuk on 5/3/2017.
  */
+@Component
 public class Client {
+    @Value("${id}")
     private String id;
+    @Value("${name}")
     private String fullName;
 
     public Client() {

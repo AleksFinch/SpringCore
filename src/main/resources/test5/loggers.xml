@@ -4,18 +4,18 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="consoleEventLogger" class="com.finchuk.test5.ConsoleEventLogger"/>
+    <bean id="consoleEventLogger" class="com.finchuk.test5.loggers.ConsoleEventLogger"/>
 
-    <bean id="fileEventLogger" class="com.finchuk.test5.FileEventLogger"
+    <bean id="fileEventLogger" class="com.finchuk.test5.loggers.FileEventLogger"
                               init-method="init">
         <property name="filename" value="src/main/resources/test5/tmp5.txt"/>
     </bean>
 
-    <bean id="cacheFileEventLogger" class="com.finchuk.test5.CacheFileEventLogger"
+    <bean id="cacheFileEventLogger" class="com.finchuk.test5.loggers.CacheFileEventLogger"
           destroy-method="destroy" parent="fileEventLogger">
         <property name="cacheSize" value="2"/>
     </bean>
-    <bean id="combinedEventLogger" class="com.finchuk.test5.CombinedEventLogger">
+    <bean id="combinedEventLogger" class="com.finchuk.test5.loggers.CombinedEventLogger">
         <constructor-arg>
             <list>
                 <ref bean="consoleEventLogger"/>

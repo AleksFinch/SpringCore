@@ -1,4 +1,6 @@
-package com.finchuk.test4;
+package com.finchuk.annotations.loggers;
+
+import com.finchuk.annotations.Event;
 
 /**
  * Created by Oleksandr_Finchuk on 5/3/2017.

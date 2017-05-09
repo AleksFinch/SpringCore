@@ -1,7 +1,10 @@
-package com.finchuk.test4;
+package com.finchuk.annotations.loggers;
 
+import com.finchuk.annotations.Event;
 import org.apache.commons.io.FileUtils;
+import org.springframework.beans.factory.annotation.Value;
 
+import javax.annotation.PreDestroy;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +13,9 @@ import java.util.List;
  * Created by Oleksandr_Finchuk on 5/3/2017.
  */
 public class CacheFileEventLogger extends FileEventLogger {
+    @Value("2")
     private int cacheSize;
-    private List<Event> cache = new ArrayList<Event>();
+    private List<Event> cache = new ArrayList<>();
 
     public void logEvent(Event event) {
         cache.add(event);
@@ -35,6 +39,7 @@ public class CacheFileEventLogger extends FileEventLogger {
         }
     }
 
+    @PreDestroy
     public void destroy(){
         if(!cache.isEmpty()){
             writeEventsFromCache();

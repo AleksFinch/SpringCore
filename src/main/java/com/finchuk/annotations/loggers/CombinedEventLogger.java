@@ -1,5 +1,7 @@
-package com.finchuk.test5;
+package com.finchuk.annotations.loggers;
 
+
+import com.finchuk.annotations.Event;
 
 import java.util.ArrayList;
 import java.util.Collection;
